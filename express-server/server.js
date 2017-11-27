@@ -25,4 +25,8 @@ const port = process.env.PORT || '3000';
 app.set('port', port);
 
 const server = http.createServer(app);
+const io = require('socket.io')(server);
 server.listen(port, () => console.log(`API running on localhost:${port}`));
+
+const socketsHandlers = require('./api/routes/socket');
+socketsHandlers(io);

@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DisplayService, View, ViewListener} from "../../services/display/display.service";
 import {OrderSummary} from "../../models/OrderSummary";
+import {NotificationService} from "../../services/notification/notification-service";
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,19 @@ export class HomeComponent implements OnInit, ViewListener {
   currentView: View;
   orderSummary: OrderSummary;
 
-  constructor(private displayService: DisplayService) {
+  constructor(private displayService: DisplayService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit(): void {
     this.currentView = this.displayService.getCurrentView();
     this.displayService.addViewListener(this);
+
+    this.notificationService.connect().subscribe(event => {
+      alert(event);
+    }, error => {
+      console.log(error);
+    });
   }
 
   viewChanged(view: View) {

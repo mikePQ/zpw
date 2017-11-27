@@ -36,6 +36,7 @@ import {AdminProductComponent} from './components/admin-product/admin-product.co
 import {AdminOrderComponent} from './components/admin-order/admin-order.component';
 import {AuthGuard} from "./guards/AuthGuard";
 import {AuthService} from "./services/auth/auth.service";
+import {NotificationService} from "./services/notification/notification-service";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -78,7 +79,7 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   providers: [ProductService, CartService, PaginationService, FiltersService,
-    DisplayService, OrderService, AuthGuard, AuthService],
+    DisplayService, OrderService, AuthGuard, AuthService, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
