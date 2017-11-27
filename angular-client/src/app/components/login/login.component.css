@@ -1,0 +1,16 @@
+.form-signin-heading {
+  margin: 75px 0 50px 0;
+}
+
+.form-control:focus {
+  border-color: #4ba74b;
+  box-shadow: none;
+}
+
+.input-field {
+  margin-bottom: 15px;
+}
+
+.btn-lg {
+  margin-top: 50px;
+}

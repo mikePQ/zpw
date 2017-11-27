@@ -1,0 +1,10 @@
+<app-header></app-header>
+<div class="container" id="wrapper">
+  <div *ngIf="currentView == 1" class="row">
+    <app-filters class="col-md-2"></app-filters>
+    <app-products-list class="offset-md-1 col-md-9"></app-products-list>
+  </div>
+  <app-cart *ngIf="currentView == 2"></app-cart>
+  <app-order-form *ngIf="currentView == 3" (orderSubmitted)="orderSubmitted($event)"></app-order-form>
+  <app-order-summary *ngIf="currentView == 4" [orderSummary]="orderSummary"></app-order-summary>
+</div>

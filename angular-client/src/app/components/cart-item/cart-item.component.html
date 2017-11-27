@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-1">
+    {{orderItem.quantity}}
+  </div>
+  <div class="col-md-7">{{orderItem.product.name}}</div>
+  <div class="col-md-1">{{orderItem.product.price | currency:"EUR":1}}</div>
+  <div class="col-md-1">{{(orderItem.quantity * orderItem.product.price) | currency:"EUR":1}}</div>
+  <div class="col-md-2">
+    <div class="row">
+      <div class="col-md-3 font-90">
+        <a class="btn-sm btn-danger float-left" (click)="removeAllProductItems()">
+          <i class="fa fa-trash-o rm-item font-90" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="col-md-3 font-90">
+        <a class="btn-sm btn-warning float-left" (click)="removeSingleProductItem()">
+          <i class="fa fa-minus rm-item font-90" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div *ngIf="isAvailable(orderItem.product)" class="col-md-3">
+        <a class="btn-sm btn-success float-left" (click)="addProductItem()">
+          <i class="fa fa-plus rm-item font-90" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

@@ -1,0 +1,104 @@
+<div class="row">
+  <h2 class="top-margin">
+    <strong>Produkty:</strong>
+  </h2>
+</div>
+
+<div class="row">
+  <div class="offset-9 col-md-3">
+    <button class="btn btn-info w-100" (click)="toggleCreateNew()">Nowy produkt</button>
+  </div>
+</div>
+
+<div *ngIf="createNew">
+  <form [formGroup]="newProductForm">
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Nazwa</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="name" formControlName="name" placeholder="Nazwa">
+      </div>
+    </div>
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Kategoria</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="category" formControlName="category"
+               placeholder="Kategoria">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Cena</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="price" formControlName="price"
+               placeholder="Cena">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Zdjęcie</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="image" formControlName="image"
+               placeholder="Zdjęcie">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Ocena</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="rating" formControlName="rating"
+               placeholder="Ocena">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Dostępnych</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="available" formControlName="available"
+               placeholder="Dostępnych">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Opis</label>
+      </div>
+      <div class="col-md-11">
+        <textarea rows="4" class="input-lg w-100" id="description" formControlName="description"
+                  placeholder="Opis"></textarea>
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="offset-10">
+        <a class="btn btn-danger text-white" (click)="cancelCreateNew()">Anuluj</a>
+        <a class="btn btn-info text-white" (click)="createNewProduct()">Zatwierdź</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+<hr>
+<app-admin-product *ngFor="let product of products" [product]="product"
+                   (productUpdated)="updateProducts()"
+                   (productRemoved)="updateProducts()">
+</app-admin-product>
+
+<div class="row top-margin">
+  <div class="col-md-3">
+    <button class="btn btn-info w-100" (click)="returnBack()">
+      Powrót
+    </button>
+  </div>
+</div>

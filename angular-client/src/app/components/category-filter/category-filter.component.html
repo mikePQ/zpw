@@ -1,0 +1,7 @@
+<div class="row">
+  <button class="col-md-12 btn btn-outline-success category-button"
+          [ngClass]="{'btn-outline-success': !isSelected, 'btn-success': isSelected}"
+          (click)="toggleSelected()">
+    {{category}}
+  </button>
+</div>

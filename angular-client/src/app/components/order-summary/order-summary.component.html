@@ -1,0 +1,39 @@
+<div class="row">
+  <h2>
+    <strong>Podsumowanie zamówienia</strong>
+  </h2>
+</div>
+
+<div class="row shipping-info">
+  <div class="col-md-5">
+    <div class="row shipping-info-header">
+      <h4>Dane do wysyłki:</h4>
+    </div>
+    <div class="font-italic">
+      <div class="row text-center">
+        {{orderSummary.order.purchaser.name}}
+      </div>
+      <div class="row text-center">
+        {{orderSummary.order.purchaser.street}} {{orderSummary.order.purchaser.homeNumber}}
+      </div>
+      <div class="row text-center">
+        {{orderSummary.order.purchaser.city}}
+      </div>
+      <div class="row text-center">
+        {{orderSummary.order.purchaser.postalCode}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-1"><strong>Ilość</strong></div>
+  <div class="col-md-9"><strong>Produkt</strong></div>
+  <div class="col-md-2"><strong>Wartość</strong></div>
+</div>
+<hr>
+
+<app-order-item *ngFor="let orderedItem of orderSummary.order.orderedItems" [orderItem]="orderedItem">
+</app-order-item>
+
+

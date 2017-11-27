@@ -1,0 +1,16 @@
+<div>
+  <div class="row">
+    <button class="btn btn-success col-md-12" (click)="resetFilters()">
+      Wyczyść filtrowanie
+    </button>
+  </div>
+  <hr class="row">
+  <app-name-filter (nameFilterChanged)="updateNameFilter($event)"></app-name-filter>
+  <hr class="row">
+  <app-price-filter (priceFilterChanged)="updatePriceFilter($event)"></app-price-filter>
+  <hr class="row">
+  <div class="row text-uppercase font-90 categories-header">Kategorie</div>
+  <app-category-filter *ngFor="let category of categories"
+                       [category]="category"
+                       (categorySelectionChanged)="updateCategoriesFilter($event)"></app-category-filter>
+</div>

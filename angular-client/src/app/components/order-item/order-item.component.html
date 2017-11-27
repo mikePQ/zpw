@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-1">
+    {{orderItem.quantity}}
+  </div>
+  <div class="col-md-9">{{orderItem.product.name}}</div>
+  <div class="col-md-2">{{(orderItem.quantity * orderItem.product.price) | currency:"EUR":1}}</div>
+</div>
+<hr>

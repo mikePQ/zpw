@@ -1,0 +1,130 @@
+<form (ngSubmit)="createOrder()">
+  <div class="order-form-header">
+    <h4><strong>Dane zamawiającego:</strong></h4>
+  </div>
+  <div class="row">
+    <div *ngIf="name.invalid && (name.dirty || name.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="name.errors.required">
+        Proszę podać imię i nazwisko
+      </div>
+      <div *ngIf="name.errors.minlength">
+        Imię i nazwisko musi zawierać co najmniej 10 znaków
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="name" class="col-3 col-form-label control-label">Imię i nazwisko</label>
+    <div class="col-9">
+      <input class="form-control" type="text" name="name" id="name" required minlength="10"
+             [(ngModel)]="purchaser.name" #name="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="email.errors.required">
+        Proszę podać email
+      </div>
+      <div *ngIf="email.errors.email">
+        Niepoprawny email
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="email" class="col-3 col-form-label control-label">Email</label>
+    <div class="col-9">
+      <input class="form-control" type="email" name="email" id="email" required email="true"
+             [(ngModel)]="purchaser.email" #email="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="phone.errors.required">
+        Proszę podać numer telefonu
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="phone" class="col-3 col-form-label control-label">Telefon</label>
+    <div class="col-9">
+      <input class="form-control" type="tel" name="phone" id="phone" required
+             [(ngModel)]="purchaser.phone" #phone="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="city.invalid && (city.dirty || city.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="city.errors.required">
+        Proszę podać miasto
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="city" class="col-3 col-form-label control-label">Miasto</label>
+    <div class="col-9">
+      <input class="form-control" type="text" name="city" id="city" required
+             [(ngModel)]="purchaser.city" #city="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="street.invalid && (street.dirty || street.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="street.errors.required">
+        Proszę podać ulicę
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="street" class="col-3 col-form-label control-label">Ulica</label>
+    <div class="col-9">
+      <input class="form-control" type="text" name="street" id="street" required
+             [(ngModel)]="purchaser.street" #street="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="homeNumber.invalid && (homeNumber.dirty || homeNumber.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="homeNumber.errors.required">
+        Proszę podać numer domu/mieszkania
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="homeNumber" class="col-3 col-form-label control-label">Numer domu/mieszkania</label>
+    <div class="col-9">
+      <input class="form-control" type="text" name="homeNumber" id="homeNumber" required
+             [(ngModel)]="purchaser.homeNumber" #homeNumber="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="postalCode.errors.required">
+        Proszę podać kod pocztowy
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="postalCode" class="col-3 col-form-label control-label">Kod pocztowy</label>
+    <div class="col-9">
+      <input class="form-control" type="text" name="postalCode" id="postalCode" required
+             [(ngModel)]="purchaser.postalCode" #postalCode="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-9 col-3">
+      <input type="submit" class="btn btn-success w-100 submit-btn" #submit
+             [disabled]="name.invalid || email.invalid || phone.invalid || city.invalid || street.invalid || homeNumber.invalid || postalCode.invalid"
+             value="Wyślij">
+    </div>
+  </div>
+</form>

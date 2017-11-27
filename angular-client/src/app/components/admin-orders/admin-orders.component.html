@@ -1,0 +1,18 @@
+<div class="row">
+  <h2 class="top-margin">
+    <strong>Zamówienia:</strong>
+  </h2>
+</div>
+
+
+<hr>
+<app-admin-order *ngFor="let order of orders" [order]="order">
+</app-admin-order>
+
+<div class="row top-margin">
+  <div class="col-md-3">
+    <button class="btn btn-info w-100" (click)="returnBack()">
+      Powrót
+    </button>
+  </div>
+</div>

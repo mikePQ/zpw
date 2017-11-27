@@ -1,0 +1,27 @@
+@font-face {
+  font-family: "Arciform";
+  src: url("assets/fonts/Arciform.otf");
+}
+
+@font-face {
+  font-family: "Brawl";
+  src: url("assets/fonts/Brawl.ttf");
+}
+
+@font-face {
+  font-family: "Jersey";
+  src: url("assets/fonts/Jersey.ttf");
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.form-group.required .control-label:after {
+  content: " * ";
+  color: red;
+}

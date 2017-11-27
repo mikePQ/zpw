@@ -1,0 +1,41 @@
+<div class="row col-md-12">
+  <div class="product col-md-4 float-left">
+    <img [src]="product.image" class="img-fluid rounded mx-auto d-block">
+  </div>
+
+  <div class="col-md-1"></div>
+  <div class="col-md-7">
+    <div>
+      <h4>
+        <strong>{{product.name}}</strong>
+      </h4>
+    </div>
+    <div>
+      {{product.description}}
+    </div>
+    <div>
+      <i *ngFor="let i of product.rating | fill" class="fa fa-star gold star"></i>
+      <i *ngFor="let i of (5 - product.rating) | fill" class="fa fa-star-o star"></i>
+    </div>
+    <hr>
+    <div>
+      <h5>{{product.price | currency:"EUR":1}}</h5>
+    </div>
+    <div style="margin-top: 10px">
+      <h6 class="text-success" [hidden]="!isAvailable">
+        <strong>DOSTĘPNY</strong>
+      </h6>
+      <h6 class="text-danger" [hidden]="isAvailable">
+        <strong>NIEDOSTĘPNY</strong>
+      </h6>
+    </div>
+    <hr>
+    <div class="btn-group" [hidden]="!isAvailable">
+      <button type="button" class="btn btn-success" (click)="addToCart(product)">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        Dodaj do koszyka
+      </button>
+    </div>
+  </div>
+</div>
+

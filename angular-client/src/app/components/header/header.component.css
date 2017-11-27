@@ -1,0 +1,26 @@
+.nav-icon {
+  color: #ffffff;
+}
+
+h2, h4, h6 {
+  display: inline-block;
+}
+
+.logo-text {
+  font-family: Jersey;
+  margin-left: 5%;
+}
+
+.cart-icon {
+  display: inline-block;
+}
+
+.cart-summary {
+  display: inline-block;
+  font-size: 90%;
+}
+
+.cart {
+  margin-right: 2%;
+}
+

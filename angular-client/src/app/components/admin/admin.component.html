@@ -1,0 +1,12 @@
+<div class="container">
+  <app-admin-home *ngIf="currentView == 1"
+                  (manage)="manage($event)">
+  </app-admin-home>
+  <app-admin-orders *ngIf="currentView == 2"
+                    (returnBack)="setView(1)">
+
+  </app-admin-orders>
+  <app-admin-products *ngIf="currentView == 3"
+                      (returnBack)="setView(1)">
+  </app-admin-products>
+</div>

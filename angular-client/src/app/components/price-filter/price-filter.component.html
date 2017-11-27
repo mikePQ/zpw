@@ -1,0 +1,19 @@
+<form>
+  <div class="form-group">
+    <div class="row">
+      <label class="font-90 text-uppercase">Cena</label>
+    </div>
+    <div class="row">
+      <input class="col-md-5 form-control input-sm" id="priceLowestFilter" name="priceLowestFilter" type="text"
+             placeholder="od" [(ngModel)]="lowest" #priceLowestFilter="ngModel">
+      <div class="col-md-2 text-center separator">-</div>
+      <input class="col-md-5 form-control input-sm" id="priceHighestFilter" name="priceHighestFilter" type="text"
+             placeholder="do" [(ngModel)]="highest" #priceLowestFilter="ngModel">
+    </div>
+    <div class="row">
+      <button class="btn btn-success col-md-5 text-sm-center offset-md-7 apply-filter-button"
+              (click)="updateFilter()">Filtruj
+      </button>
+    </div>
+  </div>
+</form>

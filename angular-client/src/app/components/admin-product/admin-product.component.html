@@ -1,0 +1,103 @@
+<div class="row">
+  <div class="col-md-7">
+    {{product.name | uppercase}}
+  </div>
+  <div class="col-md-2">{{product.category}}</div>
+  <div class="col-md-1">{{product.price | currency:"EUR":1}}</div>
+  <div class="col-md-1">{{product.available}}</div>
+  <div class="col-md-1">
+    <div class="row">
+      <div class="font-90 right-margin-5">
+        <a class="btn-sm btn-info" (click)="toggleEdit()">
+          <i class="fa fa-pencil-square-o font-90 text-white" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="font-90">
+        <a class="btn-sm btn-danger" (click)="deleteProduct()">
+          <i class="fa fa-trash-o rm-item font-90 text-white" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div *ngIf="edit">
+  <form [formGroup]="productForm">
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Nazwa</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="name" formControlName="name" placeholder="Nazwa">
+      </div>
+    </div>
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Kategoria</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="category" formControlName="category"
+               placeholder="Kategoria">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Cena</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="price" formControlName="price"
+               placeholder="Cena">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Zdjęcie</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="image" formControlName="image"
+               placeholder="Zdjęcie">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Ocena</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="rating" formControlName="rating"
+               placeholder="Ocena">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Dostępnych</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="available" formControlName="available"
+               placeholder="Dostępnych">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="name">Opis</label>
+      </div>
+      <div class="col-md-11">
+        <textarea rows="4" class="input-lg w-100" id="description" formControlName="description"
+                  placeholder="Opis"></textarea>
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="offset-10">
+        <a class="btn btn-danger text-white" (click)="cancelEdit()">Anuluj</a>
+        <a class="btn btn-info text-white" (click)="updateProduct()">Zatwierdź</a>
+      </div>
+    </div>
+  </form>
+  <hr>
+</div>
+

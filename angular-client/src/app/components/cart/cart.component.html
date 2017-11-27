@@ -1,0 +1,33 @@
+<div class="row">
+  <h2>
+    <strong>Twój koszyk:</strong>
+  </h2>
+</div>
+
+<div class="row cart-header">
+  <div class="col-md-1"><strong>Ilość</strong></div>
+  <div class="col-md-7"><strong>Produkt</strong></div>
+  <div class="col-md-1"><strong>Cena</strong></div>
+  <div class="col-md-1"><strong>Wartość</strong></div>
+  <div class="col-md-2"></div>
+</div>
+<hr>
+
+<app-cart-item *ngFor="let orderItem of orderItems" [orderItem]="orderItem"
+               (removeAllProductItems)="removeAllFromCart($event)"
+               (removeSingleProductItem)="removeSingleFromCart($event)"
+               (addProductItem)="addToCart($event)">
+</app-cart-item>
+
+<div class="row cart-buttons">
+  <div class="col-md-3">
+    <button class="btn btn-info w-100" (click)="continueShopping()">
+      Kontynuuj zakupy
+    </button>
+  </div>
+  <div class="offset-md-6 col-md-3">
+    <button class="btn btn-success w-100" [hidden]="orderItems.length < 1" (click)="createOrder()">
+      Zamawiam
+    </button>
+  </div>
+</div>

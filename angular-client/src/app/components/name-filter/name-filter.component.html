@@ -1,0 +1,10 @@
+<form>
+  <div class="form-group row">
+    <label for="nameFilter" class="font-90 text-uppercase">Nazwa</label>
+    <input class="form-control input-sm" id="nameFilter" name="nameFilter" type="text"
+           [(ngModel)]="name" #nameFilter="ngModel">
+    <button class="btn btn-success col-md-5 text-sm-center offset-md-7 apply-filter-button"
+            (click)="updateFilter()">Filtruj
+    </button>
+  </div>
+</form>

@@ -1,0 +1,11 @@
+<a routerLink="/cart">
+  <div class="cart-icon">
+    <h2>
+      <i class="fa fa-shopping-basket nav-icon" aria-hidden="true"></i>
+    </h2>
+  </div>
+  <div class="cart-summary">
+    <span class="badge badge-danger">Produkt(ów): {{productsInCart}}</span><br>
+    <span class="badge badge-warning">Wartość: {{totalValue | currency:"EUR":1}}</span>
+  </div>
+</a>

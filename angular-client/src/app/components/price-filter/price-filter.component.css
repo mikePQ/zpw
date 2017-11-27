@@ -1,0 +1,21 @@
+.font-90 {
+  font-size: 90%;
+}
+
+.form-control:focus {
+  border-color: #4ba74b;
+  box-shadow: none;
+}
+
+.apply-filter-button {
+  margin-top: 10px;
+}
+
+.apply-filter-button:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.separator {
+  margin-top: 5px;
+}
