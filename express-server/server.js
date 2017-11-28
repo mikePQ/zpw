@@ -6,6 +6,7 @@ const cors = require('cors');
 const Order = require('./api/model/order');
 const Product = require('./api/model/product');
 const User = require('./api/model/user');
+const Discount = require('./api/model/discount');
 
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;

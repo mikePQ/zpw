@@ -5,12 +5,12 @@ const Product = mongoose.model('Products');
 const util = require('./utils');
 
 exports.getAllProducts = (request, response) => {
-    Product.find({}, (error, product) => {
+    Product.find({}, (error, products) => {
         if (error) {
             response.send(error);
         }
 
-        response.send(product);
+        response.send(products);
     });
 };
 
