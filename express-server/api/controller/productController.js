@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const Product = mongoose.model('Products');
 const util = require('./utils');
+const discountService = require('../service/discountService');
 
 exports.getAllProducts = (request, response) => {
     Product.find({}, (error, products) => {
@@ -10,7 +11,7 @@ exports.getAllProducts = (request, response) => {
             response.send(error);
         }
 
-        response.send(products);
+        discountService.applyDiscounts(products, () => response.send(products));
     });
 };
 
