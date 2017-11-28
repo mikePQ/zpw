@@ -3,6 +3,7 @@
 const mongoose = require('mongoose');
 const Discount = mongoose.model('Discounts');
 const util = require('../controller/utils');
+import {notificationService} from '../service/notificationService';
 
 exports.getAllDiscounts = (request, response) => {
     util.authenticated(request, response, (request, response) => {
@@ -25,6 +26,8 @@ exports.createDiscount = (request, response) => {
             }
 
             response.json(discount);
+
+            notificationService.sendNotification('discount created');
         });
     });
 };

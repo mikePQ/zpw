@@ -1,13 +1,10 @@
 'use strict';
 
+import {notificationService} from '../service/notificationService';
+
 module.exports = (io) => {
     io.on('connection', socket => {
-        console.log('Socket connected');
-        socket.emit('message', 'Connected');
-
-        socket.on('message', message => {
-            console.log("Message Received: " + message);
-            io.emit('message', {type: 'new-message', text: message});
-        });
+        console.log('Socket connected : ' + socket);
+        notificationService.setIO(io);
     });
 };

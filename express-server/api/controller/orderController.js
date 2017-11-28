@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Order = mongoose.model('Orders');
 const Product = mongoose.model('Products');
 const util = require('./utils');
-
+import {notificationService} from '../service/notificationService';
 
 function updateProductAvailability(productName, updateCallback, response) {
     let updatedProduct;
@@ -58,6 +58,8 @@ exports.createOrder = (request, response) => {
         });
 
         response.json(order);
+
+        notificationService.sendNotification('order created');
     });
 };
 
@@ -71,6 +73,8 @@ exports.updateOrder = (request, response) => {
 
             response.json(order);
         });
+
+        notificationService.sendNotification('order updated');
     });
 };
 
@@ -85,6 +89,8 @@ exports.deleteOrder = (request, response) => {
             response.json({
                 message: `Order ${order._id} has been deleted`
             });
+
+            notificationService.sendNotification('order deleted');
         });
     });
 };

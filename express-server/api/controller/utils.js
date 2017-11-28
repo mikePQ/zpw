@@ -3,7 +3,6 @@
 const jwt = require('jsonwebtoken');
 
 exports.authenticated = (request, response, callback) => {
-    console.log(request);
     jwt.verify(request.query.token, 'secret', (error, decoded) => {
         if (error) {
             return response.status(401).json({

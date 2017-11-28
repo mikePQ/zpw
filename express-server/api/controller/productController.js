@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Product = mongoose.model('Products');
 const util = require('./utils');
 const discountService = require('../service/discountService');
+import {notificationService} from '../service/notificationService';
 
 exports.getAllProducts = (request, response) => {
     Product.find({}, (error, products) => {
@@ -37,6 +38,8 @@ exports.addProduct = (request, response) => {
 
             response.json(product);
         });
+
+        notificationService.sendNotification('product added');
     });
 };
 
@@ -49,6 +52,8 @@ exports.updateProduct = (request, response) => {
             }
 
             response.json(product);
+
+            notificationService.sendNotification('product updated');
         });
     });
 };
@@ -64,6 +69,8 @@ exports.deleteProduct = (request, response) => {
             response.json({
                 message: `Product ${product.id} has been deleted`
             });
+
+            notificationService.sendNotification('product deleted');
         });
     });
 };

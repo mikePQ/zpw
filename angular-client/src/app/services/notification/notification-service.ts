@@ -15,7 +15,7 @@ export class NotificationService {
     this.socket = io('http://localhost:3000');
 
     let observable = new Observable(observer => {
-      this.socket.on('message', (data) => {
+      this.socket.on('notification', (data) => {
         console.log("Received message from Websocket Server");
         console.log(data);
         observer.next(data);
