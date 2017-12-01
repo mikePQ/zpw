@@ -37,11 +37,14 @@ import {AdminOrderComponent} from './components/admin-order/admin-order.componen
 import {AuthGuard} from "./guards/AuthGuard";
 import {AuthService} from "./services/auth/auth.service";
 import {NotificationService} from "./services/notification/notification-service";
+import {AdminAddImageComponent} from './components/admin-add-image/admin-add-image.component';
+import {FileDropDirective, FileSelectDirective} from "ng2-file-upload";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'upload', component: AdminAddImageComponent}
 ];
 
 @NgModule({
@@ -69,7 +72,10 @@ const appRoutes: Routes = [
     AdminOrdersComponent,
     AdminHomeComponent,
     AdminProductComponent,
-    AdminOrderComponent
+    AdminOrderComponent,
+    AdminAddImageComponent,
+    FileSelectDirective,
+    FileDropDirective
   ],
   imports: [
     BrowserModule,

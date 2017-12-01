@@ -6,6 +6,7 @@ const util = require('./utils');
 const discountService = require('../service/discountService');
 import {notificationService} from '../service/notificationService';
 
+
 exports.getAllProducts = (request, response) => {
     Product.find({}, (error, products) => {
         if (error) {
