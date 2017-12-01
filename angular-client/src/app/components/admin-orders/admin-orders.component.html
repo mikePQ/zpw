@@ -1,12 +1,22 @@
 <div class="row">
   <h2 class="top-margin">
-    <strong>Zamówienia:</strong>
+    <strong>Zamówienia oczekujące na realizację:</strong>
   </h2>
 </div>
 
+<hr>
+<app-admin-order *ngFor="let order of submittedOrders" [order]="order" (orderCompleted)="updateOrders()">
+</app-admin-order>
+
+
+<div class="row">
+  <h2 class="top-margin">
+    <strong>Zamówienia zrealizowane:</strong>
+  </h2>
+</div>
 
 <hr>
-<app-admin-order *ngFor="let order of orders" [order]="order">
+<app-admin-order *ngFor="let order of completedOrders" [order]="order">
 </app-admin-order>
 
 <div class="row top-margin">

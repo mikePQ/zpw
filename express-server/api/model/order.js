@@ -22,7 +22,8 @@ const OrderSchema = new mongoose.Schema({
             rating: Number
         },
         quantity: Number
-    }]
+    }],
+    orderStatus: Number
 });
 
 module.exports = mongoose.model('Orders', OrderSchema);

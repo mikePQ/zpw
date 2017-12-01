@@ -1,5 +1,5 @@
 import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
-import {Order} from "../../models/Order";
+import {Order, OrderStatus} from "../../models/Order";
 import {OrderService} from "../../services/order/order-service";
 
 @Component({
@@ -10,7 +10,8 @@ import {OrderService} from "../../services/order/order-service";
 })
 export class AdminOrdersComponent implements OnInit {
 
-  private orders: Array<Order> = [];
+  private submittedOrders: Array<Order> = [];
+  private completedOrders: Array<Order> = [];
 
   @Output("returnBack")
   returnBackEventEmitter: EventEmitter<any> = new EventEmitter();
@@ -19,12 +20,17 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.orderService.getOrders().subscribe(orders => {
-      this.orders = orders;
-    });
+    this.updateOrders();
   }
 
   returnBack() {
     this.returnBackEventEmitter.emit(null);
+  }
+
+  updateOrders() {
+    this.orderService.getOrders().subscribe(orders => {
+      this.submittedOrders = orders.filter(order => order.orderStatus != OrderStatus.COMPLETED);
+      this.completedOrders = orders.filter(order => order.orderStatus == OrderStatus.COMPLETED);
+    });
   }
 }

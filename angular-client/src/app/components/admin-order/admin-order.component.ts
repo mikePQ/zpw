@@ -1,5 +1,6 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import {Order} from "../../models/Order";
+import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Order, OrderStatus} from "../../models/Order";
+import {OrderService} from "../../services/order/order-service";
 
 @Component({
   selector: 'app-admin-order',
@@ -12,11 +13,14 @@ export class AdminOrderComponent implements OnInit {
   @Input("order")
   order: Order;
 
+  @Output("orderCompleted")
+  orderCompletedEventEmitter: EventEmitter<Order> = new EventEmitter();
+
   totalValue: number = 0;
   details: boolean = false;
 
 
-  constructor() {
+  constructor(private orderService: OrderService) {
   }
 
   ngOnInit() {
@@ -30,5 +34,12 @@ export class AdminOrderComponent implements OnInit {
 
   toggleDetails() {
     this.details = !this.details;
+  }
+
+  markAsCompleted() {
+    this.order.orderStatus = OrderStatus.COMPLETED;
+    this.orderService.updateOrder(this.order).subscribe(order => {
+      this.orderCompletedEventEmitter.emit(order);
+    });
   }
 }

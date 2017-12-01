@@ -5,6 +5,7 @@ import {OrderSummary} from "../../models/OrderSummary";
 import {Order} from "../../models/Order";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
+import {AuthService} from "../auth/auth.service";
 
 @Injectable()
 export class OrderService {
@@ -12,6 +13,7 @@ export class OrderService {
   private ordersApi: string = 'http://localhost:3000/orders';
 
   constructor(private cartService: CartService,
+              private authService: AuthService,
               private httpClient: HttpClient) {
   }
 
@@ -29,6 +31,11 @@ export class OrderService {
           observer.error(error);
         });
     });
+  }
+
+  updateOrder(order: Order) {
+    let url = this.authService.addAuthToken(`${this.ordersApi}/${order._id}`);
+    return this.httpClient.put<Order>(url, order);
   }
 
   getOrders(): Observable<Array<Order>> {
