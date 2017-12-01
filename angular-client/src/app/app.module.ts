@@ -38,6 +38,8 @@ import {AuthGuard} from "./guards/AuthGuard";
 import {AuthService} from "./services/auth/auth.service";
 import {NotificationService} from "./services/notification/notification-service";
 import {FileDropDirective, FileSelectDirective} from "ng2-file-upload";
+import {ModalBaseComponent} from './components/modal-base/modal-base.component';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -72,14 +74,16 @@ const appRoutes: Routes = [
     AdminProductComponent,
     AdminOrderComponent,
     FileSelectDirective,
-    FileDropDirective
+    FileDropDirective,
+    ModalBaseComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
   providers: [ProductService, CartService, PaginationService, FiltersService,
     DisplayService, OrderService, AuthGuard, AuthService, NotificationService],

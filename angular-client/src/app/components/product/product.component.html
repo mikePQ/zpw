@@ -36,6 +36,14 @@
         Dodaj do koszyka
       </button>
     </div>
+    <div class="btn-group" [hidden]="!isAvailable">
+      <button type="button" class="btn btn-success" (click)="details()">
+        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+        Szczegóły
+      </button>
+    </div>
+
   </div>
 </div>
+<app-modal-base [input]="product"></app-modal-base>
 
