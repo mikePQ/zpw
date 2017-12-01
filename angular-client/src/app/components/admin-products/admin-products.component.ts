@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angul
 import {ProductService} from "../../services/product/product-service";
 import {Product} from "../../models/Product";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {FileItem, FileUploader} from "ng2-file-upload";
 
 @Component({
   selector: 'app-admin-products',
@@ -19,6 +20,8 @@ export class AdminProductsComponent implements OnInit {
   newProductForm: FormGroup;
   createNew: boolean = false;
 
+  uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/images'});
+
   constructor(private productService: ProductService,
               private formBuilder: FormBuilder) {
   }
@@ -26,6 +29,11 @@ export class AdminProductsComponent implements OnInit {
   ngOnInit() {
     this.updateProducts();
     this.buildForm();
+
+    this.uploader.onAfterAddingFile = (item: FileItem) => {
+      let fileExtension = '.' + item.file.name.split('.').pop();
+      item.file.name = encodeURIComponent(this.newProductForm.value.name || 'unknown') + fileExtension;
+    };
   }
 
   updateProducts() {
@@ -50,19 +58,22 @@ export class AdminProductsComponent implements OnInit {
   }
 
   createNewProduct() {
-    if (this.newProductForm.valid) {
+    if (this.newProductForm.valid && this.uploader.queue.length === 1) {
+      let image = this.createImageUrl(this.newProductForm.value.name);
+
       let product = {
         name: this.newProductForm.value.name,
         description: this.newProductForm.value.description,
         price: this.newProductForm.value.price,
+        image: image,
         category: this.newProductForm.value.category,
-        image: this.newProductForm.value.image,
         rating: this.newProductForm.value.rating,
         available: this.newProductForm.value.available
       };
 
+      this.uploader.uploadItem(this.uploader.queue[0]);
+
       this.productService.addNew(product).subscribe(product => {
-        console.log("Product added");
         this.createNew = false;
         this.updateProducts();
       }, error => {
@@ -81,5 +92,11 @@ export class AdminProductsComponent implements OnInit {
       available: '',
       description: ''
     });
+  }
+
+  private createImageUrl(productName: string) {
+    let fileName = this.uploader.queue[0].file.name;
+    let fileExtension = '.' + fileName.split('.').pop();
+    return 'http://localhost:3000/static/images/' + encodeURIComponent(productName) + fileExtension;
   }
 }

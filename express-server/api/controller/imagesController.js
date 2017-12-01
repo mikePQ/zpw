@@ -4,7 +4,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination: (request, file, callback) => {
-        callback(null, './images2')
+        callback(null, './images')
     },
 
     filename: (request, file, callback) => {
@@ -20,6 +20,6 @@ exports.addImage = (request, response) => {
             response.json({message: error});
             return;
         }
-        response.json({filePath: __dirname + "images2/" + request.file});
+        response.json({fileName: request.file});
     });
 };

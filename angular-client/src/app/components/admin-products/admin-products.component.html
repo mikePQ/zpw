@@ -45,7 +45,8 @@
         <label for="name">Zdjęcie</label>
       </div>
       <div class="col-md-11">
-        <input type="text" class="input-lg w-100 text-right" id="image" formControlName="image"
+        <input type="file" class="input-lg w-100 text-right" id="image" formControlName="image" ng2FileSelect
+               [uploader]="uploader"
                placeholder="Zdjęcie">
       </div>
     </div>
