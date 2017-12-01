@@ -20,7 +20,12 @@ export class AdminProductsComponent implements OnInit {
   newProductForm: FormGroup;
   createNew: boolean = false;
 
-  uploader: FileUploader = new FileUploader({url: 'http://localhost:3000/images'});
+  uploader: FileUploader = new FileUploader({
+    url: 'http://localhost:3000/images',
+    queueLimit: 1
+  });
+
+  hasDropZoneOver: boolean = false;
 
   constructor(private productService: ProductService,
               private formBuilder: FormBuilder) {
@@ -31,8 +36,12 @@ export class AdminProductsComponent implements OnInit {
     this.buildForm();
 
     this.uploader.onAfterAddingFile = (item: FileItem) => {
+      if (this.uploader.queue.length > 1) {
+        this.uploader.removeFromQueue(this.uploader.queue[0]);
+      }
+
       let fileExtension = '.' + item.file.name.split('.').pop();
-      item.file.name = encodeURIComponent(this.newProductForm.value.name || 'unknown') + fileExtension;
+      item.file.name = this.newProductForm.value.name ? encodeURIComponent(this.newProductForm.value.name) + fileExtension : item.file.name;
     };
   }
 
@@ -80,6 +89,10 @@ export class AdminProductsComponent implements OnInit {
         console.log(error);
       });
     }
+  }
+
+  fileOverDropZone(fileOverDropZone: boolean) {
+    this.hasDropZoneOver = fileOverDropZone;
   }
 
   private buildForm() {

@@ -22,7 +22,7 @@
     </div>
     <div class="row top-margin-15">
       <div class="col-md-1">
-        <label for="name">Kategoria</label>
+        <label for="category">Kategoria</label>
       </div>
       <div class="col-md-11">
         <input type="text" class="input-lg w-100 text-right" id="category" formControlName="category"
@@ -32,7 +32,7 @@
 
     <div class="row top-margin-15">
       <div class="col-md-1">
-        <label for="name">Cena</label>
+        <label for="price">Cena</label>
       </div>
       <div class="col-md-11">
         <input type="text" class="input-lg w-100 text-right" id="price" formControlName="price"
@@ -42,18 +42,25 @@
 
     <div class="row top-margin-15">
       <div class="col-md-1">
-        <label for="name">Zdjęcie</label>
+        <label for="image">Zdjęcie</label>
       </div>
       <div class="col-md-11">
-        <input type="file" class="input-lg w-100 text-right" id="image" formControlName="image" ng2FileSelect
-               [uploader]="uploader"
-               placeholder="Zdjęcie">
+        <div type="file" class="w-100 dragdrop" id="image"
+             ng2FileDrop
+             [ngClass]="{'file-over': hasDropZoneOver}"
+             (fileOver)="fileOverDropZone($event)"
+             [uploader]="uploader">
+          <div class="text-center">
+            <span *ngIf="uploader.queue.length <= 0">Przeciągnij zdjęcie tutaj</span>
+            <span *ngIf="uploader.queue.length > 0">{{uploader.queue[0].file.name}}</span>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="row top-margin-15">
       <div class="col-md-1">
-        <label for="name">Ocena</label>
+        <label for="rating">Ocena</label>
       </div>
       <div class="col-md-11">
         <input type="text" class="input-lg w-100 text-right" id="rating" formControlName="rating"
@@ -63,7 +70,7 @@
 
     <div class="row top-margin-15">
       <div class="col-md-1">
-        <label for="name">Dostępnych</label>
+        <label for="available">Dostępnych</label>
       </div>
       <div class="col-md-11">
         <input type="text" class="input-lg w-100 text-right" id="available" formControlName="available"
@@ -73,7 +80,7 @@
 
     <div class="row top-margin-15">
       <div class="col-md-1">
-        <label for="name">Opis</label>
+        <label for="description">Opis</label>
       </div>
       <div class="col-md-11">
         <textarea rows="4" class="input-lg w-100" id="description" formControlName="description"

@@ -1,3 +1,14 @@
 .top-margin {
   margin-top: 50px;
 }
+
+.dragdrop {
+  border: dotted 1px #dddddd;
+  padding: 25px 0;
+  color: #dddddd;
+}
+
+.file-over {
+  border: dotted 3px #5bc0de;
+  color: #5bc0de;
+}
