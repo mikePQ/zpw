@@ -18,6 +18,13 @@ img {
   margin-right: 3%;
 }
 
+.old-price {
+  color: brown;
+  text-decoration: line-through;
+}
 
+.new-price {
+  color: #4ba74b;
+}
 
 

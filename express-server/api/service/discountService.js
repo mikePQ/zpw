@@ -4,6 +4,13 @@ const mongoose = require('mongoose');
 const Discount = mongoose.model('Discounts');
 
 exports.applyDiscounts = (products, callback) => {
+    products = products.map(product => {
+        product.normalPrice = product.price;
+        return product;
+    });
+
+    products.forEach(product => console.log(product));
+
     let currentTime = Date.now() / 1000;
     Discount.find({
         startTime: {$lte: currentTime},
@@ -22,6 +29,6 @@ exports.applyDiscounts = (products, callback) => {
             });
         });
 
-        callback();
+        callback(products);
     });
 };

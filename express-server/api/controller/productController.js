@@ -8,12 +8,12 @@ import {notificationService} from '../service/notificationService';
 
 
 exports.getAllProducts = (request, response) => {
-    Product.find({}, (error, products) => {
+    Product.find().lean().exec({}, (error, products) => {
         if (error) {
             response.send(error);
         }
 
-        discountService.applyDiscounts(products, () => response.send(products));
+        discountService.applyDiscounts(products, (elements) => response.json(elements));
     });
 };
 

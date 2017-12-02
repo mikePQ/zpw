@@ -19,7 +19,11 @@
     </div>
     <hr>
     <div>
-      <h5>{{product.price | currency:"EUR":1}}</h5>
+      <h5>
+        <span
+          [ngClass]="{'old-price': product.price < product.normalPrice}">{{product.normalPrice | currency:"EUR":1}}</span>
+        <span *ngIf="product.price < product.normalPrice" class="new-price">{{product.price | currency:"EUR":1}}</span>
+      </h5>
     </div>
     <div style="margin-top: 10px">
       <h6 class="text-success" [hidden]="!isAvailable">

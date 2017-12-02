@@ -41,16 +41,17 @@ export class AdminProductComponent implements OnInit {
 
   updateProduct() {
     if (this.productForm.valid) {
-      let product: Product = {
-        _id: this.product._id,
-        name: this.productForm.value.name,
-        description: this.productForm.value.description,
-        price: this.productForm.value.price,
-        category: this.productForm.value.category,
-        image: this.productForm.value.image,
-        rating: this.productForm.value.rating,
-        available: this.productForm.value.available
-      };
+      let product: Product = new Product(
+        this.product._id,
+        this.productForm.value.name,
+        this.productForm.value.description,
+        this.productForm.value.price,
+        this.productForm.value.category,
+        this.productForm.value.image,
+        this.productForm.value.rating,
+        this.productForm.value.available,
+        this.productForm.value.price
+      );
 
       this.productService.updateProduct(this.product, product).subscribe(product => {
           console.log("Product updated");
@@ -81,7 +82,7 @@ export class AdminProductComponent implements OnInit {
     this.productForm = this.formBuilder.group({
       name: this.product ? this.product.name : '',
       category: this.product ? this.product.category : '',
-      price: this.product ? this.product.price : '',
+      price: this.product ? this.product.normalPrice : '',
       image: this.product ? this.product.image : '',
       rating: this.product ? this.product.rating : '',
       available: this.product ? this.product.available : '',
