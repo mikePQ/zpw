@@ -1,0 +1,15 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Szczegóły produktu</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-product [product]="product"></app-product>
+  </div>
+</ng-template>
+<button type="button" class="btn btn-info" (click)="open(content)">
+  <i class="fa fa-info-circle" aria-hidden="true"></i>
+  Szczegóły
+</button>

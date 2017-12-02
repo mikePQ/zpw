@@ -40,6 +40,7 @@ import {NotificationService} from "./services/notification/notification-service"
 import {FileDropDirective, FileSelectDirective} from "ng2-file-upload";
 import {ModalBaseComponent} from './components/modal-base/modal-base.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
     AdminOrderComponent,
     FileSelectDirective,
     FileDropDirective,
-    ModalBaseComponent
+    ModalBaseComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
