@@ -25,8 +25,6 @@ export class AdminOrderComponent implements OnInit {
 
   ngOnInit() {
     if (this.order) {
-
-      console.log(this.order);
       this.totalValue = this.order.orderedItems.map(item => item.product.price * item.quantity)
         .reduce((a, b) => a + b, 0);
     }

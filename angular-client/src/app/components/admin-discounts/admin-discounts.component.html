@@ -1,0 +1,28 @@
+<div class="row">
+  <h2 class="top-margin">
+    <strong>Aktualne promocje:</strong>
+  </h2>
+</div>
+
+<hr>
+<app-admin-discount *ngFor="let discount of currentDiscounts" [discount]="discount">
+</app-admin-discount>
+
+
+<div class="row">
+  <h2 class="top-margin">
+    <strong>Poprzednie promocje:</strong>
+  </h2>
+</div>
+
+<hr>
+<app-admin-discount *ngFor="let discount of previousDiscounts" [discount]="discount">
+</app-admin-discount>
+
+<div class="row top-margin">
+  <div class="col-md-3">
+    <button class="btn btn-info w-100" (click)="returnBack()">
+      Powrót
+    </button>
+  </div>
+</div>

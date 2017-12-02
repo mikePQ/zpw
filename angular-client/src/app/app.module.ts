@@ -44,6 +44,9 @@ import {ProductDetailsComponent} from './components/product-details/product-deta
 import {SignInComponent} from './components/sign-in/sign-in.component';
 import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {AdminNavbarComponent} from './components/admin-navbar/admin-navbar.component';
+import {AdminDiscountsComponent} from './components/admin-discounts/admin-discounts.component';
+import {DiscountService} from "./services/discount/discount-service";
+import { AdminDiscountComponent } from './components/admin-discount/admin-discount.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -83,7 +86,9 @@ const appRoutes: Routes = [
     ProductDetailsComponent,
     SignInComponent,
     SignUpComponent,
-    AdminNavbarComponent
+    AdminNavbarComponent,
+    AdminDiscountsComponent,
+    AdminDiscountComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +99,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot()
   ],
   providers: [ProductService, CartService, PaginationService, FiltersService,
-    DisplayService, OrderService, AuthGuard, AuthService, NotificationService],
+    DisplayService, OrderService, AuthGuard, AuthService, NotificationService, DiscountService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

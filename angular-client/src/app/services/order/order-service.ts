@@ -39,6 +39,7 @@ export class OrderService {
   }
 
   getOrders(): Observable<Array<Order>> {
-    return this.httpClient.get<Order[]>(this.ordersApi);
+    let url = this.authService.addAuthToken(this.ordersApi);
+    return this.httpClient.get<Order[]>(url);
   }
 }
