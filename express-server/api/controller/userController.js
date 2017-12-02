@@ -44,6 +44,15 @@ exports.signIn = (request, response) => {
                 error: {message: 'Invalid login credentials'}
             });
         }
+
+        let loginAsAdmin = request.body.asAdmin;
+        if (loginAsAdmin && !user.roles.includes('admin')) {
+            return response.status(401).json({
+                title: 'Login failed',
+                error: {message: 'Invalid login credentials'}
+            });
+        }
+
         let token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
         response.status(200).json({
             message: 'Successfully logged in',

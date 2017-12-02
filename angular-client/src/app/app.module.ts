@@ -40,9 +40,10 @@ import {NotificationService} from "./services/notification/notification-service"
 import {FileDropDirective, FileSelectDirective} from "ng2-file-upload";
 import {ModalBaseComponent} from './components/modal-base/modal-base.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import { ProductDetailsComponent } from './components/product-details/product-details.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
+import {ProductDetailsComponent} from './components/product-details/product-details.component';
+import {SignInComponent} from './components/sign-in/sign-in.component';
+import {SignUpComponent} from './components/sign-up/sign-up.component';
+import {AdminNavbarComponent} from './components/admin-navbar/admin-navbar.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -81,7 +82,8 @@ const appRoutes: Routes = [
     ModalBaseComponent,
     ProductDetailsComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,

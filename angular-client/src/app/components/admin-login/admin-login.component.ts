@@ -22,13 +22,10 @@ export class AdminLoginComponent implements OnInit {
     this.buildForm();
   }
 
-  login() {
+  login2() {
     let user = new User(this.loginForm.value.email, this.loginForm.value.password);
-    this.authService.login(user, this.goToAdmin);
-  }
-
-  goToAdmin() {
-    this.router.navigate(['/admin']);
+    let router = this.router;
+    this.authService.login(user, () => router.navigate(['/admin']), true);
   }
 
   private buildForm() {
