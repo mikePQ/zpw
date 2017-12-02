@@ -1,5 +1,6 @@
 .form-signin-heading {
   margin: 75px 0 50px 0;
+  font-weight: bold;
 }
 
 .form-control:focus {
@@ -13,4 +14,9 @@
 
 .btn-lg {
   margin-top: 50px;
+}
+
+.sign-up {
+  margin-top: 50px;
+  font-size: 125%;
 }

@@ -15,7 +15,9 @@ export class DisplayService {
   }
 
   changeView(view: View) {
-    this.previousView = this.currentView;
+    if (this.currentView !== View.SignUp && this.currentView !== View.SignIn) {
+      this.previousView = this.currentView;
+    }
     this.currentView = view;
     this.listeners.forEach(listener => listener.viewChanged(view));
   }

@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {DisplayService, View} from "../../services/display/display.service";
+import {AuthListener, AuthService} from "../../services/auth/auth.service";
 
 @Component({
   selector: 'app-header',
@@ -7,12 +8,17 @@ import {DisplayService, View} from "../../services/display/display.service";
   styleUrls: ['./header.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AuthListener {
 
-  constructor(private displayService: DisplayService) {
+  isLoggedIn: boolean = false;
+
+  constructor(private displayService: DisplayService,
+              private authService: AuthService) {
   }
 
   ngOnInit() {
+    this.authService.addListener(this);
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   signIn() {
@@ -21,5 +27,17 @@ export class HeaderComponent implements OnInit {
 
   signUp() {
     this.displayService.changeView(View.SignUp);
+  }
+
+  signOut() {
+    this.authService.signOut();
+  }
+
+  userSignedIn() {
+    this.isLoggedIn = true;
+  }
+
+  userSignedOut() {
+    this.isLoggedIn = false;
   }
 }

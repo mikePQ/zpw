@@ -42,6 +42,7 @@ import {ModalBaseComponent} from './components/modal-base/modal-base.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -79,7 +80,8 @@ const appRoutes: Routes = [
     FileDropDirective,
     ModalBaseComponent,
     ProductDetailsComponent,
-    SignInComponent
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
