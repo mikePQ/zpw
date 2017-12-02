@@ -9,8 +9,6 @@ exports.applyDiscounts = (products, callback) => {
         return product;
     });
 
-    products.forEach(product => console.log(product));
-
     let currentTime = Date.now() / 1000;
     Discount.find({
         startTime: {$lte: currentTime},
