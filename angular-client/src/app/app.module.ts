@@ -22,7 +22,7 @@ import {OrderFormComponent} from './components/order-form/order-form.component';
 import {OrderSummaryComponent} from './components/order-summary/order-summary.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AdminComponent} from './components/admin/admin.component';
-import {LoginComponent} from './components/login/login.component';
+import {AdminLoginComponent} from './components/admin-login/admin-login.component';
 import {PriceFilterComponent} from './components/price-filter/price-filter.component';
 import {NameFilterComponent} from './components/name-filter/name-filter.component';
 import {DisplayService} from "./services/display/display.service";
@@ -41,10 +41,11 @@ import {FileDropDirective, FileSelectDirective} from "ng2-file-upload";
 import {ModalBaseComponent} from './components/modal-base/modal-base.component';
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'login', component: LoginComponent},
+  {path: 'admin-login', component: AdminLoginComponent},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
 ];
 
@@ -65,7 +66,7 @@ const appRoutes: Routes = [
     OrderFormComponent,
     OrderSummaryComponent,
     AdminComponent,
-    LoginComponent,
+    AdminLoginComponent,
     PriceFilterComponent,
     NameFilterComponent,
     OrderItemComponent,
@@ -77,7 +78,8 @@ const appRoutes: Routes = [
     FileSelectDirective,
     FileDropDirective,
     ModalBaseComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

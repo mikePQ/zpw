@@ -1,13 +1,27 @@
-<header class="navbar navbar-dark bg-dark fixed-top">
-  <div>
-    <a class="navbar-brand" href="/">
-      <h2 class="logo">
-        <i class="fa fa-futbol-o nav-icon" aria-hidden="true"></i>
-      </h2>
-      <h4 class="logo-text">Sklep sportowy</h4>
-    </a>
-  </div>
-  <div class="cart">
-    <app-cart-summary></app-cart-summary>
+<header class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <h2 class="logo">
+          <i class="fa fa-futbol-o nav-icon" aria-hidden="true"></i>
+        </h2>
+        <h4 class="logo-text">Sklep sportowy</h4>
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right center-vertically">
+      <li>
+        <a href="#" class="text-white" (click)="signUp()"><i class="fa fa-user text-white" aria-hidden="true"></i>
+          Zarejestruj się
+        </a>
+      </li>
+      <li>
+        <a href="#" class="text-white" (click)="signIn()"><i class="fa fa-sign-in text-white" aria-hidden="true"></i>
+          Zaloguj się
+        </a>
+      </li>
+      <li>
+        <app-cart-summary></app-cart-summary>
+      </li>
+    </ul>
   </div>
 </header>

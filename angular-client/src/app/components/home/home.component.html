@@ -7,4 +7,6 @@
   <app-cart *ngIf="currentView == 2"></app-cart>
   <app-order-form *ngIf="currentView == 3" (orderSubmitted)="orderSubmitted($event)"></app-order-form>
   <app-order-summary *ngIf="currentView == 4" [orderSummary]="orderSummary"></app-order-summary>
+  <app-sign-in *ngIf="currentView == 5"></app-sign-in>
+  <app-sign-in *ngIf="currentView == 6"></app-sign-in> <!-- todo signup-->
 </div>
