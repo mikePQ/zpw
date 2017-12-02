@@ -18,6 +18,12 @@ export class AuthService {
     });
   }
 
+  signUp(user: User, callback: () => void) {
+    this.httpClient.post<any>('http://localhost:3000/users', user).subscribe(response => {
+      callback();
+    });
+  }
+
   addAuthToken(url: string): string {
     let token = localStorage.getItem('token') ? '?token=' + localStorage.getItem('token') : '';
     return url + token;

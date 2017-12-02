@@ -23,7 +23,7 @@ export class AdminLoginComponent implements OnInit {
   }
 
   login() {
-    let user = new User(this.loginForm.value.username, this.loginForm.value.password);
+    let user = new User(this.loginForm.value.email, this.loginForm.value.password);
     this.authService.login(user, this.goToAdmin);
   }
 
@@ -33,7 +33,7 @@ export class AdminLoginComponent implements OnInit {
 
   private buildForm() {
     this.loginForm = this.formBuilder.group({
-      username: '',
+      email: '',
       password: ''
     });
   }

@@ -6,7 +6,7 @@ const User = mongoose.model('Users');
 
 exports.createUser = (request, response) => {
     let user = new User({
-        username: request.body.username,
+        email: request.body.email,
         password: bcrypt.hashSync(request.body.password, 10)
     });
 
@@ -25,7 +25,7 @@ exports.createUser = (request, response) => {
 };
 
 exports.signIn = (request, response) => {
-    User.findOne({username: request.body.username}, (error, user) => {
+    User.findOne({email: request.body.email}, (error, user) => {
         if (error) {
             return response.status(500).json({
                 title: 'An error occurred',

@@ -1,3 +1,50 @@
-<p>
-  sign-up works!
-</p>
+<form (ngSubmit)="signUp()">
+  <div class="order-form-header">
+    <h2 class="form-header">Rejestracja</h2>
+  </div>
+  <div class="row">
+    <div *ngIf="email.invalid && (email.dirty || email.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="email.errors.required">
+        Email jest wymagany
+      </div>
+      <div *ngIf="email.errors.email">
+        Niepoprawny email
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="email" class="col-3 col-form-label control-label">Email</label>
+    <div class="col-9">
+      <input class="form-control" type="email" name="email" id="email" required email="true"
+             [(ngModel)]="user.email" #email="ngModel">
+    </div>
+  </div>
+  <div class="row">
+    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+         class="alert alert-danger validation-error w-75">
+
+      <div *ngIf="password.errors.required">
+        Hasło jest obowiązkowe
+      </div>
+      <div *ngIf="password.errors.minlength">
+        Hasło powinno zawierać co najmniej 5 znaków
+      </div>
+    </div>
+  </div>
+  <div class="form-group required row">
+    <label for="email" class="col-3 col-form-label control-label">Hasło</label>
+    <div class="col-9">
+      <input class="form-control" type="password" name="password" id="password" required
+             [(ngModel)]="user.password" #password="ngModel">
+    </div>
+  </div>
+  <div class="row submit-btn">
+    <div class="offset-9 col-3">
+      <input type="submit" class="btn btn-success w-100 submit-btn" #submit
+             [disabled]="email.invalid || password.invalid"
+             value="Zarejestruj się">
+    </div>
+  </div>
+</form>
