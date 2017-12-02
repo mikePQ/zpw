@@ -2,11 +2,18 @@
 
 const jwt = require('jsonwebtoken');
 
-exports.authenticated = (request, response, callback) => {
+exports.withAdminRights = (request, response, callback) => {
     jwt.verify(request.query.token, 'secret', (error, decoded) => {
         if (error) {
             return response.status(401).json({
                 title: 'Not Authenticated',
+                error: error
+            });
+        }
+
+        if (!decoded.user.roles.includes('admin')) {
+            return response.status(401).json({
+                title: 'Unauthorized access',
                 error: error
             });
         }

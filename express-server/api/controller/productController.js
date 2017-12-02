@@ -30,7 +30,7 @@ exports.getProduct = (request, response) => {
 
 
 exports.addProduct = (request, response) => {
-    util.authenticated(request, response, (request, response) => {
+    util.withAdminRights(request, response, (request, response) => {
         let newProduct = new Product(request.body);
         newProduct.save((error, product) => {
             if (error) {
@@ -45,7 +45,7 @@ exports.addProduct = (request, response) => {
 };
 
 exports.updateProduct = (request, response) => {
-    util.authenticated(request, response, (request, response) => {
+    util.withAdminRights(request, response, (request, response) => {
         let productId = request.params.productId;
         Product.findOneAndUpdate({_id: productId}, request.body, {new: true}, (error, product) => {
             if (error) {
@@ -60,7 +60,7 @@ exports.updateProduct = (request, response) => {
 };
 
 exports.deleteProduct = (request, response) => {
-    util.authenticated(request, response, (request, response) => {
+    util.withAdminRights(request, response, (request, response) => {
         let productId = request.params.productId;
         Product.remove({_id: productId}, (error, product) => {
             if (error) {

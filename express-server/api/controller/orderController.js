@@ -64,7 +64,7 @@ exports.createOrder = (request, response) => {
 };
 
 exports.updateOrder = (request, response) => {
-    util.authenticated(request, response, (request, response) => {
+    util.withAdminRights(request, response, (request, response) => {
         let orderId = request.params.orderId;
         Order.findOneAndUpdate({_id: orderId}, request.body, {new: true}, (error, order) => {
             if (error) {
@@ -79,7 +79,7 @@ exports.updateOrder = (request, response) => {
 };
 
 exports.deleteOrder = (request, response) => {
-    util.authenticated(request, response, (request, response) => {
+    util.withAdminRights(request, response, (request, response) => {
         let orderId = request.params.orderId;
         Order.remove({_id: orderId}, (error, order) => {
             if (error) {

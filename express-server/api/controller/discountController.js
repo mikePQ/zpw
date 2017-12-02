@@ -6,7 +6,7 @@ const util = require('../controller/utils');
 import {notificationService} from '../service/notificationService';
 
 exports.getAllDiscounts = (request, response) => {
-    util.authenticated(request, response, (request, response) => {
+    util.withAdminRights(request, response, (request, response) => {
         Discount.find({}, (error, discount) => {
             if (error) {
                 response.send(error);
@@ -18,7 +18,7 @@ exports.getAllDiscounts = (request, response) => {
 };
 
 exports.createDiscount = (request, response) => {
-    util.authenticated(request, response, (request, response) => {
+    util.withAdminRights(request, response, (request, response) => {
         let newDiscount = new Discount(request.body);
         newDiscount.save((error, discount) => {
             if (error) {
