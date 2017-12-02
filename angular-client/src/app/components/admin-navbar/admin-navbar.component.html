@@ -1,3 +1,32 @@
-<p>
-  admin-navbar works!
-</p>
+<header class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" (click)="setView(1)">
+        <h2 class="logo">
+          <i class="fa fa-futbol-o nav-icon" aria-hidden="true"></i>
+        </h2>
+        <h4 class="logo-text">Panel administratora</h4>
+      </a>
+    </div>
+    <ul class="nav navbar-nav navbar-right center-vertically">
+      <li>
+        <a class="text-white" (click)="setView(2)">Zamówienia</a>
+      </li>
+
+      <li>
+        <a class="text-white" (click)="setView(3)">Produkty</a>
+      </li>
+
+      <li>
+        <a class="text-white" (click)="setView(4)">Promocje</a>
+      </li>
+
+      <li>
+        <a class="text-white" (click)="signOut()"><i class="fa fa-sign-out text-white" aria-hidden="true"></i>
+          Wyloguj się
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+

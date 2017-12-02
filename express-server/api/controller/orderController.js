@@ -23,12 +23,32 @@ function updateProductAvailability(productName, updateCallback, response) {
 }
 
 exports.getAllOrders = (request, response) => {
-    Order.find({}, (error, order) => {
+    util.authorized(request, response, (request, response, error, decoded) => {
         if (error) {
-            response.send(error);
+            return response.status(401).json({
+                title: 'Not Authorized',
+                error: error
+            });
         }
 
-        response.send(order);
+        let user = decoded.user;
+        if (user.roles.includes('admin')) {
+            Order.find({}, (error, orders) => {
+                if (error) {
+                    response.send(error);
+                }
+
+                response.send(orders);
+            });
+        } else {
+            Order.find({purchaser: {email: user.email}}, (error, orders) => {
+                if (error) {
+                    response.send(error);
+                }
+
+                response.send(orders);
+            });
+        }
     });
 };
 

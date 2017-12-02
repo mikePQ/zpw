@@ -1,4 +1,6 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Router} from "@angular/router";
+import {AdminView} from "../admin/admin.component";
 
 @Component({
   selector: 'app-admin-navbar',
@@ -8,9 +10,22 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class AdminNavbarComponent implements OnInit {
 
-  constructor() { }
+  @Output("changeView")
+  changeViewEventEmitter: EventEmitter<any> = new EventEmitter();
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
+  }
+
+  signOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/admin-login']);
+  }
+
+  setView(view: AdminView) {
+    this.changeViewEventEmitter.emit(view);
   }
 
 }

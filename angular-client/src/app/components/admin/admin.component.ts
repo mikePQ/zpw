@@ -25,6 +25,6 @@ export class AdminComponent implements OnInit {
   }
 }
 
-enum AdminView {
-  Home = 1, Orders = 2, Products = 3
+export enum AdminView {
+  Home = 1, Orders = 2, Products = 3, Discounts = 4
 }
