@@ -16,7 +16,7 @@ mongoose.connect('mongodb://localhost/sport-shop');
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:4200',
+    origin: 'http://localhost:80',
     credentials: true
 }));
 
