@@ -17,7 +17,13 @@ export class AdminComponent implements OnInit {
   }
 
   manage(category) {
-    this.currentView = category == "products" ? AdminView.Products : AdminView.Orders;
+    if (category == 'products') {
+      this.currentView = AdminView.Products;
+    } else if (category == 'orders') {
+      this.currentView = AdminView.Orders
+    } else if (category == 'discounts') {
+      this.currentView = AdminView.Discounts
+    }
   }
 
   setView(view: AdminView) {

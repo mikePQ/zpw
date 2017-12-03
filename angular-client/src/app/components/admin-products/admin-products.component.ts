@@ -3,6 +3,7 @@ import {ProductService} from "../../services/product/product-service";
 import {Product} from "../../models/Product";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {FileItem, FileUploader} from "ng2-file-upload";
+import {NotificationService} from "../../services/notification/notification-service";
 
 @Component({
   selector: 'app-admin-products',
@@ -28,12 +29,17 @@ export class AdminProductsComponent implements OnInit {
   hasDropZoneOver: boolean = false;
 
   constructor(private productService: ProductService,
-              private formBuilder: FormBuilder) {
+              private formBuilder: FormBuilder,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
     this.updateProducts();
     this.buildForm();
+
+    this.notificationService.connect().subscribe(() => {
+      this.updateProducts();
+    });
 
     this.uploader.onAfterAddingFile = (item: FileItem) => {
       if (this.uploader.queue.length > 1) {

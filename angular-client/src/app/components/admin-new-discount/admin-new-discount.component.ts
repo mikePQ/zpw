@@ -12,7 +12,8 @@ import {DiscountService} from "../../services/discount/discount-service";
 })
 export class AdminNewDiscountComponent implements OnInit {
   newDiscountForm: FormGroup;
-  products: Array<Product> = [];
+  productForm: FormGroup;
+  products: Array<any> = [];
 
   @Output("cancel")
   cancelEventEmitter: EventEmitter<any> = new EventEmitter();
@@ -28,7 +29,7 @@ export class AdminNewDiscountComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
     this.productService.getProducts().subscribe(products => {
-      this.products = products;
+      this.products = this.createProductsControls(products);
     });
   }
 
@@ -37,6 +38,10 @@ export class AdminNewDiscountComponent implements OnInit {
       startTime: '',
       endTime: '',
       percentage: '',
+      products: '',
+    });
+
+    this.productForm = this.formBuilder.group({
       products: ''
     });
   }
@@ -47,11 +52,15 @@ export class AdminNewDiscountComponent implements OnInit {
 
   apply() {
     if (this.newDiscountForm.valid) {
+
+      let products = this.getProducts();
+      console.log(products);
+
       let discount = {
-        startTime: 1,
-        endTime: 2,
-        percentage: 10,
-        products: []
+        startTime: this.getTime(this.newDiscountForm.value.startTime),
+        endTime: this.getTime(this.newDiscountForm.value.endTime),
+        percentage: this.newDiscountForm.value.percentage,
+        products: this.getProducts()
       };
 
       this.discountService.createNew(discount).subscribe(() => {
@@ -63,5 +72,23 @@ export class AdminNewDiscountComponent implements OnInit {
     } else {
       //todo warn
     }
+  }
+
+  private getProducts(): Array<string> {
+    return this.products.filter(productControl => productControl.selected)
+      .map(productControl => productControl.element.name);
+  }
+
+  private getTime(datetime: string): number {
+    return Date.parse(datetime) / 1000;
+  }
+
+  private createProductsControls(products: Array<Product>): Array<any> {
+    return products.map(product => {
+      return {
+        element: product,
+        selected: false
+      }
+    });
   }
 }

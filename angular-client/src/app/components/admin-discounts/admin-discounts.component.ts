@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation} f
 import {DiscountService} from "../../services/discount/discount-service";
 import {Discount} from "../../models/Discount";
 import {AdminNewDiscountComponent} from "../admin-new-discount/admin-new-discount.component";
+import {NotificationService} from "../../services/notification/notification-service";
 
 @Component({
   selector: 'app-admin-discounts',
@@ -21,11 +22,15 @@ export class AdminDiscountsComponent implements OnInit {
   @ViewChild(AdminNewDiscountComponent)
   newDiscount: AdminNewDiscountComponent;
 
-  constructor(private discountService: DiscountService) {
+  constructor(private discountService: DiscountService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
     this.updateDiscounts();
+    this.notificationService.connect().subscribe(() => {
+      this.updateDiscounts();
+    });
   }
 
   returnBack() {
@@ -43,7 +48,7 @@ export class AdminDiscountsComponent implements OnInit {
 
   toggleCreateNew() {
     this.createNew = !this.createNew;
-    if (this.createNew) {
+    if (this.createNew && this.newDiscount) {
       this.newDiscount.buildForm();
     }
   }
