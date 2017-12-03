@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import * as io from 'socket.io-client';
 import {Observable} from 'rxjs/Observable';
-import * as Rx from 'rxjs/Rx';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class NotificationService {
@@ -11,7 +11,7 @@ export class NotificationService {
   constructor() {
   }
 
-  connect(): Rx.Subject<MessageEvent> {
+  connect(): Subject<MessageEvent> {
     this.socket = io('http://localhost:3000');
 
     let observable = new Observable(observer => {
@@ -31,7 +31,7 @@ export class NotificationService {
       },
     };
 
-    return Rx.Subject.create(observer, observable);
+    return Subject.create(observer, observable);
   }
 
 }

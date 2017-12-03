@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Product} from "../../models/Product";
 import {Review} from "../../models/Review";
 import {Observable} from "rxjs/Observable";
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class ReviewService {

@@ -11,8 +11,8 @@ import {NotificationService} from "../../services/notification/notification-serv
 })
 export class AdminOrdersComponent implements OnInit {
 
-  private submittedOrders: Array<Order> = [];
-  private completedOrders: Array<Order> = [];
+  submittedOrders: Array<Order> = [];
+  completedOrders: Array<Order> = [];
 
   @Output("returnBack")
   returnBackEventEmitter: EventEmitter<any> = new EventEmitter();

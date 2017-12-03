@@ -12,9 +12,9 @@ import {NotificationService} from "../../services/notification/notification-serv
 })
 export class AdminDiscountsComponent implements OnInit {
 
-  private createNew: boolean = false;
-  private currentDiscounts: Array<Discount> = [];
-  private previousDiscounts: Array<Discount> = [];
+  createNew: boolean = false;
+  currentDiscounts: Array<Discount> = [];
+  previousDiscounts: Array<Discount> = [];
 
   @Output("returnBack")
   returnBackEventEmitter: EventEmitter<any> = new EventEmitter();

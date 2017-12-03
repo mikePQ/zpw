@@ -11,7 +11,7 @@ import {NotificationService} from "../../services/notification/notification-serv
 })
 export class MyOrdersComponent implements OnInit {
 
-  private orders: Array<Order> = [];
+  orders: Array<Order> = [];
 
   constructor(private orderService: OrderService,
               private notificationService: NotificationService) {

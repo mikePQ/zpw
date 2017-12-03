@@ -11,7 +11,7 @@ import {DisplayService, View} from "../../services/display/display.service";
   encapsulation: ViewEncapsulation.None
 })
 export class CartComponent implements OnInit, CartListener {
-  private orderItems: Array<OrderItem> = [];
+  orderItems: Array<OrderItem> = [];
 
   constructor(private cartService: CartService,
               private displayService: DisplayService) {

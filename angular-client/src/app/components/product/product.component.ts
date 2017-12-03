@@ -12,10 +12,10 @@ import {DisplayService, View} from "../../services/display/display.service";
 export class ProductComponent implements OnInit {
 
   @Input("product")
-  private product: Product;
+  product: Product;
 
   @Input("isAvailable")
-  private isAvailable: boolean;
+  isAvailable: boolean;
 
   constructor(private cartService: CartService,
               private displayService: DisplayService) {

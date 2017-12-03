@@ -9,8 +9,8 @@ import {Product} from "../../models/Product";
   encapsulation: ViewEncapsulation.None
 })
 export class CartSummaryComponent implements OnInit, CartListener {
-  private productsInCart: number = 0;
-  private totalValue: number = 0;
+  productsInCart: number = 0;
+  totalValue: number = 0;
 
   constructor(private cartService: CartService) {
   }
