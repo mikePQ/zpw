@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {CartService} from "../cart/cart.service";
 import {Purchaser} from "../../models/Purchaser";
 import {OrderSummary} from "../../models/OrderSummary";
-import {Order} from "../../models/Order";
+import {Order, OrderStatus} from "../../models/Order";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {AuthService} from "../auth/auth.service";
@@ -18,13 +18,17 @@ export class OrderService {
   }
 
   createOrder(purchaser: Purchaser): Observable<OrderSummary> {
-    let order = new Order(purchaser, this.cartService.getOrderItems());
+    let order = {
+      purchaser: purchaser,
+      orderedItems: this.cartService.getOrderItems(),
+      orderStatus: OrderStatus.SUBMITTED
+    };
 
     return Observable.create((observer) => {
       this.httpClient.post(this.ordersApi, order).subscribe(
         () => {
           this.cartService.clearCart();
-          observer.next(new OrderSummary(order, new Date(Date.now())));
+          observer.next(new OrderSummary(new Order(order.purchaser, order.orderedItems), new Date(Date.now())));
           observer.complete();
         },
         (error) => {

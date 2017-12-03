@@ -1,7 +1,7 @@
 <header class="navbar navbar-inverse navbar-fixed-top navbar-dark bg-dark ">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="/">
+      <a class="navbar-brand" (click)="mainView()">
         <h2 class="logo">
           <i class="fa fa-futbol-o nav-icon" aria-hidden="true"></i>
         </h2>
@@ -10,22 +10,30 @@
     </div>
     <ul class="nav navbar-nav navbar-right center-vertically">
       <li *ngIf="!isLoggedIn">
-        <a href="#" class="text-white" (click)="signUp()"><i class="fa fa-user text-white" aria-hidden="true"></i>
+        <a class="text-white" (click)="signUp()"><i class="fa fa-user text-white" aria-hidden="true"></i>
           Zarejestruj się
         </a>
       </li>
       <li *ngIf="!isLoggedIn">
-        <a href="#" class="text-white" (click)="signIn()"><i class="fa fa-sign-in text-white" aria-hidden="true"></i>
+        <a class="text-white" (click)="signIn()"><i class="fa fa-sign-in text-white" aria-hidden="true"></i>
           Zaloguj się
         </a>
       </li>
       <li *ngIf="isLoggedIn">
-        <a href="#" class="text-white" (click)="signOut()"><i class="fa fa-sign-out text-white" aria-hidden="true"></i>
+        <a class="text-white" (click)="signOut()"><i class="fa fa-sign-out text-white" aria-hidden="true"></i>
           Wyloguj się
         </a>
       </li>
+      <li *ngIf="isLoggedIn">
+        <a class="text-white" (click)="myOrders()"><i class="fa fa-shopping-bag text-white"
+                                                      aria-hidden="true"></i>
+          Historia zamówień
+        </a>
+      </li>
       <li>
-        <app-cart-summary></app-cart-summary>
+        <a (click)="cartView()">
+          <app-cart-summary></app-cart-summary>
+        </a>
       </li>
     </ul>
   </div>

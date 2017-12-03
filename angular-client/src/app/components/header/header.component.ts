@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit, AuthListener {
 
   signOut() {
     this.authService.signOut();
+
   }
 
   userSignedIn() {
@@ -39,5 +40,18 @@ export class HeaderComponent implements OnInit, AuthListener {
 
   userSignedOut() {
     this.isLoggedIn = false;
+    this.displayService.changeView(View.Products);
+  }
+
+  myOrders() {
+    this.displayService.changeView(View.MyOrders);
+  }
+
+  mainView() {
+    this.displayService.changeView(View.Products);
+  }
+
+  cartView() {
+    this.displayService.changeView(View.Cart);
   }
 }

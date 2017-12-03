@@ -32,7 +32,7 @@ export class DisplayService {
 }
 
 export enum View {
-  Products = 1, Cart = 2, OrderForm = 3, OrderSummary = 4, SignIn = 5, SignUp = 6
+  Products = 1, Cart = 2, OrderForm = 3, OrderSummary = 4, SignIn = 5, SignUp = 6, MyOrders = 7
 }
 
 export interface ViewListener {

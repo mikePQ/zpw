@@ -1,0 +1,12 @@
+.top-margin {
+  margin-top: 35px;
+}
+
+.top-margin-15 {
+  margin-top: 15px;
+}
+
+.input-lg:focus {
+  box-shadow: none;
+  outline-color: #5bc0de;
+}

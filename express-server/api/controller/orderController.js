@@ -41,7 +41,7 @@ exports.getAllOrders = (request, response) => {
                 response.send(orders);
             });
         } else {
-            Order.find({purchaser: {email: user.email}}, (error, orders) => {
+            Order.find({"purchaser.email": user.email}, (error, orders) => {
                 if (error) {
                     response.send(error);
                 }
@@ -67,7 +67,9 @@ exports.createOrder = (request, response) => {
     let newOrder = new Order(request.body);
     newOrder.save((error, order) => {
         if (error) {
-            response.send(error);
+            return response.status(500).json({
+                error: error
+            });
         }
 
         order.orderedItems.forEach(item => {

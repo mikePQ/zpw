@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-md-3">
+    {{order.purchaser.name}}
+  </div>
+  <div class="col-md-2">{{order.orderedItems.length}}</div>
+  <div class="col-md-2">{{totalValue | currency:"EUR":1}}</div>
+  <div class="col-md-2" [ngClass]="{'text-success': order.orderStatus == 2, 'text-danger': order.orderStatus == 1}">
+    {{order.orderStatus == 1 ? 'DO REALIZACJI' : 'ZREALIZOWANE'}}
+  </div>
+  <div class="col-md-3">
+    <div class="row">
+      <div class="offset-2 col-md-8 font-90">
+        <a class="btn-sm btn-info text-white text-uppercase" (click)="toggleDetails()">
+          Szczegóły
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="details" class="row top-margin">
+  <div class="offset-2 col-md-8">
+    <div *ngFor="let item of order.orderedItems">
+      <hr>
+      <div class="row">
+        <div class="col-md-8">
+          {{item.product.name}}
+        </div>
+        <div class="col-md-2">
+          {{item.quantity}}
+        </div>
+        <div class="col-md-2">
+          {{item.product.price * item.quantity}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>

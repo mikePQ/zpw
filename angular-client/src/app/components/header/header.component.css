@@ -9,6 +9,7 @@ h2, h4, h6 {
 .logo-text {
   font-family: Jersey;
   margin-left: 5%;
+  color: #ffffff;
 }
 
 .cart-icon {
@@ -46,4 +47,8 @@ li {
 
 .navbar-nav > li > a > i {
   font-size: 125%;
+}
+
+a {
+  cursor: pointer;
 }

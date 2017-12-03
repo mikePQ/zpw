@@ -1,0 +1,20 @@
+<div class="row">
+  <h2 class="top-margin">
+    <strong>Moje zamówienia:</strong>
+  </h2>
+</div>
+
+
+<hr *ngIf="orders.length > 0">
+<div *ngIf="orders.length > 0" class="row">
+  <div class="col-md-3 strong">
+    Imię i nazwisko
+  </div>
+  <div class="col-md-2 strong">Produktów</div>
+  <div class="col-md-2 strong">Wartość</div>
+  <div class="col-md-2 strong">Status</div>
+  <div class="col-md-3 strong"></div>
+</div>
+<hr>
+<app-order *ngFor="let order of orders" [order]="order">
+</app-order>
