@@ -16,6 +16,9 @@ module.exports = (app) => {
     const imageRoutes = require('./imageRoutes');
     imageRoutes.addRouting(app);
 
+    const cartRoutes = require('./cartRoutes');
+    cartRoutes.addRouting(app);
+
     app.use((request, response) => {
         response.status(404).send({url: request.originalUrl + ' not found'});
     });

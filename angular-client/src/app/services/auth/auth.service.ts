@@ -62,6 +62,20 @@ export class AuthService {
     return user.roles.includes('admin');
   }
 
+  getLoggedUserEmail(): string {
+    if (!this.isLoggedIn()) {
+      return '';
+    }
+
+    let token = localStorage.getItem('token');
+    if (token === null) {
+      return '';
+    }
+
+    let decoded = decode(token);
+    return decoded.user.email;
+  }
+
   signOut() {
     localStorage.removeItem('token');
     this.notifyUserSignedOut();
