@@ -46,7 +46,8 @@ import {SignUpComponent} from './components/sign-up/sign-up.component';
 import {AdminNavbarComponent} from './components/admin-navbar/admin-navbar.component';
 import {AdminDiscountsComponent} from './components/admin-discounts/admin-discounts.component';
 import {DiscountService} from "./services/discount/discount-service";
-import { AdminDiscountComponent } from './components/admin-discount/admin-discount.component';
+import {AdminDiscountComponent} from './components/admin-discount/admin-discount.component';
+import {AdminNewDiscountComponent} from './components/admin-new-discount/admin-new-discount.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -88,7 +89,8 @@ const appRoutes: Routes = [
     SignUpComponent,
     AdminNavbarComponent,
     AdminDiscountsComponent,
-    AdminDiscountComponent
+    AdminDiscountComponent,
+    AdminNewDiscountComponent
   ],
   imports: [
     BrowserModule,

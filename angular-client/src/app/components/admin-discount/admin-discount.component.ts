@@ -15,8 +15,6 @@ export class AdminDiscountComponent implements OnInit {
 
   // @Output("orderCompleted")
   // orderCompletedEventEmitter: EventEmitter<Order> = new EventEmitter();
-  //
-  // totalValue: number = 0;
   details: boolean = false;
 
 

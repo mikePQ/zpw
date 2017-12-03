@@ -4,6 +4,30 @@
   </h2>
 </div>
 
+<div class="row">
+  <div class="offset-10 col-md-2">
+    <button type="button" class="btn btn-info" (click)="toggleCreateNew()">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+      Nowa promocja
+    </button>
+  </div>
+</div>
+
+<div *ngIf="createNew" class="new-discount">
+  <app-admin-new-discount></app-admin-new-discount>
+</div>
+
+<hr *ngIf="currentDiscounts.length > 0">
+<div *ngIf="currentDiscounts.length > 0" class="row">
+  <div class="col-md-3 strong">
+    Początek
+  </div>
+  <div class="col-md-3 strong">Koniec</div>
+  <div class="col-md-1 strong">Zniżka</div>
+  <div class="col-md-3 strong">Ilość produktów</div>
+  <div class="col-md-2">
+  </div>
+</div>
 <hr>
 <app-admin-discount *ngFor="let discount of currentDiscounts" [discount]="discount">
 </app-admin-discount>
@@ -15,6 +39,17 @@
   </h2>
 </div>
 
+<hr *ngIf="previousDiscounts.length > 0">
+<div *ngIf="previousDiscounts.length > 0" class="row">
+  <div class="col-md-4 strong">
+    Początek
+  </div>
+  <div class="col-md-3 strong">Koniec</div>
+  <div class="col-md-1 strong">Zniżka</div>
+  <div class="col-md-2 strong">Ilość produktów</div>
+  <div class="col-md-3">
+  </div>
+</div>
 <hr>
 <app-admin-discount *ngFor="let discount of previousDiscounts" [discount]="discount">
 </app-admin-discount>

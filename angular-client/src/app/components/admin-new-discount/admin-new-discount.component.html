@@ -1,0 +1,49 @@
+<div>
+  <form [formGroup]="newDiscountForm">
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="startTime">Początek</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="startTime" formControlName="startTime"
+               placeholder="YYYY-MM-DD-HH:MM">
+      </div>
+    </div>
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="endTime">Koniec</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="endTime" formControlName="endTime"
+               placeholder="YYYY-MM-DD-HH:MM">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="percentage">Zniżka</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="percentage" formControlName="price"
+               placeholder="0">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="col-md-1">
+        <label for="rating">Produkty</label>
+      </div>
+      <div class="col-md-11">
+        <input type="text" class="input-lg w-100 text-right" id="rating" formControlName="rating"
+               placeholder="Ocena">
+      </div>
+    </div>
+
+    <div class="row top-margin-15">
+      <div class="offset-10">
+        <a class="btn btn-danger text-white" (click)="cancel()">Anuluj</a>
+        <a class="btn btn-info text-white" (click)="apply()">Zatwierdź</a>
+      </div>
+    </div>
+  </form>
+</div>

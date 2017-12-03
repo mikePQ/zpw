@@ -1,6 +1,7 @@
-import {Component, EventEmitter, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild, ViewEncapsulation} from '@angular/core';
 import {DiscountService} from "../../services/discount/discount-service";
 import {Discount} from "../../models/Discount";
+import {AdminNewDiscountComponent} from "../admin-new-discount/admin-new-discount.component";
 
 @Component({
   selector: 'app-admin-discounts',
@@ -10,24 +11,28 @@ import {Discount} from "../../models/Discount";
 })
 export class AdminDiscountsComponent implements OnInit {
 
+  private createNew: boolean = false;
   private currentDiscounts: Array<Discount> = [];
   private previousDiscounts: Array<Discount> = [];
 
   @Output("returnBack")
   returnBackEventEmitter: EventEmitter<any> = new EventEmitter();
 
+  @ViewChild(AdminNewDiscountComponent)
+  newDiscount: AdminNewDiscountComponent;
+
   constructor(private discountService: DiscountService) {
   }
 
   ngOnInit() {
-    this.updateOrders();
+    this.updateDiscounts();
   }
 
   returnBack() {
     this.returnBackEventEmitter.emit(null);
   }
 
-  updateOrders() {
+  updateDiscounts() {
     let now = Date.now() / 1000;
 
     this.discountService.getDiscounts().subscribe(discounts => {
@@ -36,4 +41,14 @@ export class AdminDiscountsComponent implements OnInit {
     });
   }
 
+  toggleCreateNew() {
+    this.createNew = !this.createNew;
+    if (this.createNew) {
+      this.newDiscount.buildForm();
+    }
+  }
+
+  cancelCreateNew() {
+    this.createNew = false;
+  }
 }

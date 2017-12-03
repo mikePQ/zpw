@@ -24,8 +24,6 @@ exports.withAdminRights = (request, response, callback) => {
             });
         }
 
-        console.log(decoded);
-
         if (!decoded.user.roles.includes('admin')) {
             return response.status(401).json({
                 title: 'Unauthorized access',

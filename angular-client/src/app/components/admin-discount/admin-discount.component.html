@@ -1,3 +1,31 @@
-<p>
-  admin-discount works!
-</p>
+<div class="row">
+  <div class="col-md-3">
+    {{discount.startTime * 1000 | date:'medium'}}
+  </div>
+  <div class="col-md-3">{{discount.endTime * 1000 | date:'medium'}}</div>
+  <div class="col-md-1">{{discount.percentage}}</div>
+  <div class="col-md-2">{{discount.products.length}}</div>
+  <div class="col-md-3">
+    <div class="row">
+      <div class="offset-2 col-md-8 font-90">
+        <a class="btn-sm btn-info text-white text-uppercase" (click)="toggleDetails()">
+          Lista produktów
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="details" class="row top-margin">
+  <div class="offset-2 col-md-8">
+    <div *ngFor="let product of discount.products">
+      <hr>
+      <div class="row">
+        <div class="col-md-8">
+          {{product}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
