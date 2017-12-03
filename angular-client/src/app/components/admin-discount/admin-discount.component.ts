@@ -12,9 +12,6 @@ export class AdminDiscountComponent implements OnInit {
 
   @Input("discount")
   discount: Discount;
-
-  // @Output("orderCompleted")
-  // orderCompletedEventEmitter: EventEmitter<Order> = new EventEmitter();
   details: boolean = false;
 
 
@@ -28,11 +25,7 @@ export class AdminDiscountComponent implements OnInit {
     this.details = !this.details;
   }
 
-  // markAsCompleted() {
-  //   this.order.orderStatus = OrderStatus.COMPLETED;
-  //   this.orderService.updateOrder(this.order).subscribe(order => {
-  //     this.orderCompletedEventEmitter.emit(order);
-  //   });
-  // }
-
+  remove() {
+    this.discountService.removeDiscount(this.discount).subscribe();
+  }
 }

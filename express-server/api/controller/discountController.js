@@ -31,3 +31,20 @@ exports.createDiscount = (request, response) => {
         });
     });
 };
+
+exports.deleteDiscount = (request, response) => {
+    util.withAdminRights(request, response, (request, response) => {
+        let discountId = request.params.discountId;
+        Discount.remove({_id: discountId}, (error, discount) => {
+            if (error) {
+                response.send(error);
+            }
+
+            response.json({
+                message: `Discount with id: ${discountId} has been deleted`
+            });
+
+            notificationService.sendNotification('discount deleted');
+        });
+    });
+};

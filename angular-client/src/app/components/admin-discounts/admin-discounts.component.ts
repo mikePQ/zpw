@@ -51,4 +51,9 @@ export class AdminDiscountsComponent implements OnInit {
   cancelCreateNew() {
     this.createNew = false;
   }
+
+  discountCreated() {
+    this.createNew = false;
+    this.updateDiscounts();
+  }
 }

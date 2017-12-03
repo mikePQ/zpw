@@ -6,4 +6,7 @@ exports.addRouting = (app) => {
     app.route('/discounts')
         .get(discountController.getAllDiscounts)
         .post(discountController.createDiscount);
+
+    app.route('/discounts/:discountId')
+        .delete(discountController.deleteDiscount);
 };

@@ -14,7 +14,7 @@
 </div>
 
 <div *ngIf="createNew" class="new-discount">
-  <app-admin-new-discount></app-admin-new-discount>
+  <app-admin-new-discount (cancel)="cancelCreateNew()" (created)="discountCreated()"></app-admin-new-discount>
 </div>
 
 <hr *ngIf="currentDiscounts.length > 0">
@@ -41,13 +41,13 @@
 
 <hr *ngIf="previousDiscounts.length > 0">
 <div *ngIf="previousDiscounts.length > 0" class="row">
-  <div class="col-md-4 strong">
+  <div class="col-md-3 strong">
     Początek
   </div>
   <div class="col-md-3 strong">Koniec</div>
   <div class="col-md-1 strong">Zniżka</div>
-  <div class="col-md-2 strong">Ilość produktów</div>
-  <div class="col-md-3">
+  <div class="col-md-3 strong">Ilość produktów</div>
+  <div class="col-md-2">
   </div>
 </div>
 <hr>

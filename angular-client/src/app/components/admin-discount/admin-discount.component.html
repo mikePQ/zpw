@@ -7,9 +7,15 @@
   <div class="col-md-2">{{discount.products.length}}</div>
   <div class="col-md-3">
     <div class="row">
-      <div class="offset-2 col-md-8 font-90">
+      <div class="col-md-8 font-90">
         <a class="btn-sm btn-info text-white text-uppercase" (click)="toggleDetails()">
           Lista produktów
+        </a>
+      </div>
+
+      <div class="font-90">
+        <a class="btn-sm btn-danger" (click)="remove()">
+          <i class="fa fa-trash-o rm-item font-90 text-white" aria-hidden="true"></i>
         </a>
       </div>
     </div>
