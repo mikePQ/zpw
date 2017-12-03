@@ -28,8 +28,4 @@ export class ProductComponent implements OnInit {
     this.cartService.addProduct(product);
     this.displayService.changeView(View.Cart);
   }
-
-  details() {
-    //todo
-  }
 }

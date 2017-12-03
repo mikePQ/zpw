@@ -6,7 +6,61 @@
     </button>
   </div>
   <div class="modal-body">
-    <app-product [product]="product"></app-product>
+    <div class="row col-md-12">
+      <div class="product col-md-4 float-left">
+        <img [src]="product.image" class="img-fluid rounded mx-auto d-block">
+      </div>
+
+      <div class="col-md-1"></div>
+      <div class="col-md-7">
+        <div>
+          <h4>
+            <strong>{{product.name}}</strong>
+          </h4>
+        </div>
+        <div>
+          {{product.description}}
+        </div>
+        <div>
+          <i *ngFor="let i of product.rating | fill" class="fa fa-star gold star"></i>
+          <i *ngFor="let i of (5 - product.rating) | fill" class="fa fa-star-o star"></i>
+        </div>
+        <hr>
+        <div>
+          <h5>
+        <span
+          [ngClass]="{'old-price': product.price < product.normalPrice}">{{product.normalPrice | currency:"EUR":1}}</span>
+            <span *ngIf="product.price < product.normalPrice"
+                  class="new-price">{{product.price | currency:"EUR":1}}</span>
+          </h5>
+        </div>
+        <div style="margin-top: 10px">
+          <h6 class="text-success" [hidden]="!isAvailable">
+            <strong>DOSTĘPNY</strong>
+          </h6>
+          <h6 class="text-danger" [hidden]="isAvailable">
+            <strong>NIEDOSTĘPNY</strong>
+          </h6>
+        </div>
+        <hr>
+        <div class="btn-group" [hidden]="!isAvailable">
+          <button type="button" class="btn btn-success" (click)="d('Cross click'); addToCart(product)">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            Dodaj do koszyka
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="top-margin-15">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Opinie użytkowników:</h4>
+        </div>
+      </div>
+      <app-product-review-list [product]="product">
+      </app-product-review-list>
+    </div>
   </div>
 </ng-template>
 <button type="button" class="btn btn-info" (click)="open(content)">

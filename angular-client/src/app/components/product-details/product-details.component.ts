@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {Product} from "../../models/Product";
+import {DisplayService, View} from "../../services/display/display.service";
+import {CartService} from "../../services/cart/cart.service";
 
 @Component({
   selector: 'app-product-details',
@@ -15,7 +17,9 @@ export class ProductDetailsComponent implements OnInit {
   @Input("isAvailable")
   isAvailable: boolean;
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,
+              private cartService: CartService,
+              private displayService: DisplayService) {
   }
 
   ngOnInit() {
@@ -24,6 +28,14 @@ export class ProductDetailsComponent implements OnInit {
   open(content) {
     this.modalService.open(content, {size: "lg", windowClass: 'modal-xxl'})
       .result
-      .then(() => {}, () => {});
+      .then(() => {
+      }, () => {
+      });
   }
+
+  addToCart(product: Product) {
+    this.cartService.addProduct(product);
+    this.displayService.changeView(View.Cart);
+  }
+
 }

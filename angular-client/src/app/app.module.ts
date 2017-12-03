@@ -48,8 +48,11 @@ import {AdminDiscountsComponent} from './components/admin-discounts/admin-discou
 import {DiscountService} from "./services/discount/discount-service";
 import {AdminDiscountComponent} from './components/admin-discount/admin-discount.component';
 import {AdminNewDiscountComponent} from './components/admin-new-discount/admin-new-discount.component';
-import { MyOrdersComponent } from './components/my-orders/my-orders.component';
-import { OrderComponent } from './components/order/order.component';
+import {MyOrdersComponent} from './components/my-orders/my-orders.component';
+import {OrderComponent} from './components/order/order.component';
+import {ProductReviewComponent} from './components/product-review/product-review.component';
+import {ProductReviewListComponent} from './components/product-review-list/product-review-list.component';
+import {ReviewService} from "./services/review/review-service";
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -94,7 +97,9 @@ const appRoutes: Routes = [
     AdminDiscountComponent,
     AdminNewDiscountComponent,
     MyOrdersComponent,
-    OrderComponent
+    OrderComponent,
+    ProductReviewComponent,
+    ProductReviewListComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +110,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot()
   ],
   providers: [ProductService, CartService, PaginationService, FiltersService,
-    DisplayService, OrderService, AuthGuard, AuthService, NotificationService, DiscountService],
+    DisplayService, OrderService, AuthGuard, AuthService, NotificationService, DiscountService, ReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

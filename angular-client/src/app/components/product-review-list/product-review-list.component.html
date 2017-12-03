@@ -1,0 +1,6 @@
+<app-product-review *ngFor="let review of pagedReviews" [review]="review">
+</app-product-review>
+
+<a class="pages-nav float-right">
+  <app-pages-nav [pager]="pager" (changePageEventEmitter)="setPage($event)"></app-pages-nav>
+</a>

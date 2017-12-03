@@ -1,0 +1,17 @@
+<hr>
+<div class="col-md-12">
+  <div>
+    <i *ngFor="let i of review.rate | fill" class="fa fa-star gold star"></i>
+    <i *ngFor="let i of (5 - review.rate) | fill" class="fa fa-star-o star"></i>
+  </div>
+</div>
+<div class="col-md-12">
+  <h6>
+    <span class="strong">Imię i nazwisko:</span>
+    <span class="font-italic">{{review.reviewer}}</span>
+  </h6>
+</div>
+<div class="col-md-12 font-italic">
+  {{review.review}}
+</div>
+<hr>
