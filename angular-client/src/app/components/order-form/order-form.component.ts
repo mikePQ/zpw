@@ -32,7 +32,7 @@ export class OrderFormComponent implements OnInit {
         this.displayService.changeView(View.OrderSummary);
       },
       error => {
-        console.log(error); //todo
+        alert('Wystąpił błąd. Proszę spróbować ponownie')
       });
   }
 }

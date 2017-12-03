@@ -19,12 +19,18 @@ export class AuthService {
       localStorage.setItem('token', token);
       callback();
       this.notifyUserSignedIn();
+    }, error => {
+      console.log(error);
+      alert("Błędne dane logowania");
     });
   }
 
   signUp(user: User, callback: () => void) {
     this.httpClient.post<any>('http://localhost:3000/users', user).subscribe(response => {
       callback();
+    }, error => {
+      console.log(error);
+      alert('Użytkownik o podanej nazwie już istnieje');
     });
   }
 

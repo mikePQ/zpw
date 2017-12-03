@@ -66,11 +66,11 @@ export class AdminNewDiscountComponent implements OnInit {
       this.discountService.createNew(discount).subscribe(() => {
         this.createdEventEmitter.emit(discount);
       }, error => {
-        //todo
+        alert(error);
       });
 
     } else {
-      //todo warn
+      alert('Formularz zawiera błędy');
     }
   }
 
