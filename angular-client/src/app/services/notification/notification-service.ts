@@ -12,7 +12,7 @@ export class NotificationService {
   }
 
   connect(): Subject<MessageEvent> {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('http://195.181.222.52:3000');
 
     let observable = new Observable(observer => {
       this.socket.on('notification', (data) => {

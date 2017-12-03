@@ -7,7 +7,7 @@ import {Discount} from "../../models/Discount";
 @Injectable()
 export class DiscountService {
 
-  private discountsApi: string = 'http://localhost:3000/discounts';
+  private discountsApi: string = 'http://195.181.222.52:3000/discounts';
 
   constructor(private authService: AuthService,
               private httpClient: HttpClient) {

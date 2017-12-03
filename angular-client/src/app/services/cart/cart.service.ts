@@ -7,7 +7,7 @@ import {AuthListener, AuthService} from "../auth/auth.service";
 
 @Injectable()
 export class CartService implements AuthListener {
-  private cartApi: string = 'http://localhost:3000/cart';
+  private cartApi: string = 'http://195.181.222.52:3000/cart';
 
   private products: Array<Product> = [];
   private cartListeners: Array<CartListener> = [];

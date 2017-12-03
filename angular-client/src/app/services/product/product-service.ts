@@ -8,7 +8,7 @@ import {AuthService} from "../auth/auth.service";
 @Injectable()
 export class ProductService {
 
-  private productsApi: string = 'http://localhost:3000/products';
+  private productsApi: string = 'http://195.181.222.52:3000/products';
 
   constructor(private cartService: CartService,
               private authService: AuthService,
