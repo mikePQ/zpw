@@ -22,7 +22,7 @@ export class AdminProductsComponent implements OnInit {
   createNew: boolean = false;
 
   uploader: FileUploader = new FileUploader({
-    url: 'http://195.181.222.52:3000/images',
+    url: 'http://localhost:3000/images',
     queueLimit: 1
   });
 

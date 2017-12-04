@@ -14,7 +14,7 @@ export class AuthService {
     let body: any = user;
     body.asAdmin = asAdmin;
 
-    this.httpClient.post<any>('http://195.181.222.52:3000/users/signin', body).subscribe(response => {
+    this.httpClient.post<any>('http://localhost:3000/users/signin', body).subscribe(response => {
       let token = response.token;
       localStorage.setItem('token', token);
       callback();
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
   signUp(user: User, callback: () => void) {
-    this.httpClient.post<any>('http://195.181.222.52:3000/users', user).subscribe(response => {
+    this.httpClient.post<any>('http://localhost:3000/users', user).subscribe(response => {
       callback();
     }, error => {
       console.log(error);

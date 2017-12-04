@@ -10,7 +10,7 @@ import {AuthService} from "../auth/auth.service";
 @Injectable()
 export class OrderService {
 
-  private ordersApi: string = 'http://195.181.222.52:3000/orders';
+  private ordersApi: string = 'http://localhost:3000/orders';
 
   constructor(private cartService: CartService,
               private authService: AuthService,
