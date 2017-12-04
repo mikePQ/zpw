@@ -28,6 +28,18 @@ exports.createDiscount = (request, response) => {
             response.json(discount);
 
             notificationService.sendNotification('discount created');
+
+            let now = Date.now();
+            let toStart = newDiscount.startTime - now / 1000;
+            let toEnd = newDiscount.endTime - now / 1000;
+
+            if (toStart > 0) {
+                setTimeout(() => notificationService.sendNotification('discount started'), toStart * 1000);
+            }
+
+            if (toEnd > 0) {
+                setTimeout(() => notificationService.sendNotification('discount finished'), toEnd * 1000);
+            }
         });
     });
 };
