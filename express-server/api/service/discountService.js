@@ -15,7 +15,7 @@ exports.applyDiscounts = (products, callback) => {
         endTime: {$gte: currentTime}
     }, (error, discounts) => {
         if (error || discounts.length < 1) {
-            callback();
+            callback(products);
             return;
         }
 
