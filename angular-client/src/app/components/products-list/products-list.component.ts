@@ -3,6 +3,7 @@ import {Pager, PaginationService} from "../../services/pagination/pagination.ser
 import {ProductService} from "../../services/product/product-service";
 import {Product} from "../../models/Product";
 import {EmptyFilter, Filter, FilterListener, FiltersService} from "../../services/filter/filters.service";
+import {NotificationService} from "../../services/notification/notification-service";
 
 @Component({
   selector: 'app-products-list',
@@ -15,15 +16,21 @@ export class ProductsListComponent implements OnInit, FilterListener {
 
   pager: Pager = Pager.empty();
   pagedProducts: Array<Product>;
+  currentFilter: Filter = new EmptyFilter();
 
   constructor(private productService: ProductService,
               private filterService: FiltersService,
-              private paginationService: PaginationService) {
+              private paginationService: PaginationService,
+              private notificationService: NotificationService) {
   }
 
   ngOnInit() {
     this.updateProducts();
     this.filterService.addFilterListener(this);
+
+    this.notificationService.connect().subscribe(() => {
+      this.updateProducts(this.currentFilter);
+    });
   }
 
   setPage(page: number) {
@@ -40,6 +47,7 @@ export class ProductsListComponent implements OnInit, FilterListener {
   }
 
   filterChanged(newFilter: Filter) {
+    this.currentFilter = newFilter;
     this.updateProducts(newFilter);
   }
 
